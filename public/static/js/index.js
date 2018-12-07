@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+$(document).ready(function(){
+    $(".one_bar").click(function(){
+          $(this).next().slideToggle();
+          $(this).parent().siblings().children("ul").slideUp();
+    });
+});

@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+body,div,p,span,table,tr,th,td,ol,li,ul,dd,dt,dl,b{font-size:12px;margin:0;padding:0;}
+.two_bar {
+	margin-left:80px;
+	display:none;
+}
+li {
+	list-style:none;
+}
+.two_bar li,.one_bar {
+	display:block;
+	font-size:16px;
+	background-color:#55339e;
+	color:#ffffff;
+	border-bottom:1px solid #ffffff;
+	border-radius:10px;
+	line-height:38px;
+	overflow:hidden;
+	padding-left:200px;
+	height:38px;
+}
+.one_bar {
+	line-height: 50px;
+	height: 50px;
+}
+b{margin-right:5px;}
+a:link,a:visited,a:hover,a:active {
+	text-decoration:none;
+	color: #fff;
+	
+}
+
