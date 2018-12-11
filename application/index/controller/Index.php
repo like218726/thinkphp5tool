@@ -17,8 +17,8 @@ class Index extends Controller
 				'GetWechatPublicUserInfo'=>['name'=>'关注微信公众号后通过授权登陆自动获取其信息','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/GetWechatPublicUserInfo'],
 				'WechatMassage'=>['name'=>'关注微信公众号后通过授权登陆自动获取其信息','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/WechatMassage'],
 			],
-			'gwash2'=>[
-				'address'=>['name'=>'国家省市区乡镇','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Addr_select'],
+			'demo'=>[
+				'dir'=>['name'=>'遍历循环目录下的文件','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Addr_select'],
 				'excel_output'=>['name'=>'excel导出','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Excel_output'],
 			],
 		];
