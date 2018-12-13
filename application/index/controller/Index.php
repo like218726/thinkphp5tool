@@ -20,6 +20,7 @@ class Index extends Controller
 			'demo'=>[
 				'dir'=>['name'=>'遍历循环目录下的文件','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Addr_select'],
 				'excel_output'=>['name'=>'excel导出','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Excel_output'],
+				'video'=>['name'=>'excel导出','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Video'],
 			],
 		];
 		$this->assign("menu",$menu);
