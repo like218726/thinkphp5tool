@@ -20,7 +20,7 @@ class Index extends Controller
 			],
 			'demo'=>[
 				'dir'=>['name'=>'遍历循环目录下的文件','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/ScanDirlFile'],
-//				'excel_output'=>['name'=>'excel导出','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Excel_output'],
+				'fuzzy'=>['name'=>'模糊化字符串或者数组','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Fuzzy'],
 				'video'=>['name'=>'视频播放','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Video'],
 				'md5'=>['name'=>'MD5在线解密','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Md5'],
 			],
