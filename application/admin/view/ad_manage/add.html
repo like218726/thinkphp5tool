@@ -1,0 +1,163 @@
+<link href="/plugins/video/css/video-js.min.css" rel="stylesheet">
+{block name="main"}
+    <fieldset class="layui-elem-field">
+        <legend>广告列表 - {$row['id'] ? '编辑' : '新增'}广告</legend>
+        <div class="layui-field-box">
+            <form class="layui-form" action="">
+				<div class="layui-form-item" id="upload_vedio_div" {if condition="isset($row['type'])"}{if $row['type'] eq 1}style="display:none;"{else}{/if}{else /}style="display:none;"{/if}>
+					<label class="layui-form-label"><span style="color:red">*</span> 视频文件</label>
+                    <div class="layui-input-block">
+                        <input type="file" name="file" id="uploadFile" lay-type="video" class="layui-upload-file">
+                        <input type="text" name="video_src" id="image_path" style="border: none; width: 0">
+						{if condition="isset($row['image_src'])"}
+                        <video id="my-video" class="video-js" controls preload="auto" width="600" height="300"
+							  poster="{$row['image_src']}" data-setup="{}">
+						{else /}
+						<video id="my-video" class="video-js" controls preload="auto" width="600" height="300"
+							  poster="/video/image/m.jpg" data-setup="{}">
+						{/if}	  	
+					        <source id="image" src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+					    	<source src="" type="video/webm">
+					    	<source src="" type="video/ogg">
+					        <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+					      </video>																		
+						<span style="color:red;">最大允许上传50M</span> 
+					</div>
+				</div>	
+				<div class="layui-form-item" id="upload_image_div" {if condition="isset($row['type'])"}{if $row['type'] eq 1}style="display:none;"{else}{/if}{else /}style="display:none;"{/if}>
+					<label class="layui-form-label"><span style="color:red">*</span> 封面图片</label>
+                    <div class="layui-input-block">
+                        <input type="file" name="file" id="uploadFile2" class="layui-upload-file">
+                        <input type="text" name="image_src" id="image_path2" style="border: none; width: 0">
+                        <img src="" style = "width:200px;" id="image2">  
+						<span style="color:red;">最大允许上传50M</span>    
+					</div>
+				</div>
+				<div class="layui-form-item" id="upload_img_div" {if condition="isset($row['type'])"}{if $row['type'] eq 2}style="display:none;"{else}{/if}{else /}{/if}>
+					<label class="layui-form-label"><span style="color:red">*</span> 图片地址</label>
+                    <div class="layui-input-block">
+                        <input type="file" name="file" id="uploadFile3" class="layui-upload-file">
+                        <input type="text" name="img_src" id="image_path3" style="border: none; width: 0">
+                        <img src="" style = "width:200px;" id="image3">
+						<span style="color:red;">最大允许上传50M</span> 
+					</div>
+				</div>			
+            </form>
+        </div>
+    </fieldset>
+{/block}
+{block name="myScript"}
+	<script type="text/javascript">
+        var host = window.location.host;
+        var imageObj = $("#image");
+        var image_path = '{$row["video_src"] ? $row["video_src"] : ""}';
+        if (image_path != ''){
+            imageObj.attr('src','http://'+host+'/'+image_path);  //
+        }		
+        $("#image_path").val(image_path);
+        layui.use('upload', function(){
+            var options = {
+                elem: '#uploadFile',
+                url: '{:url("upload/video")}',
+                ext: 'mp4',
+				before:function(res){
+					var size = res.files[0].size;
+					if(size > 52428800){
+						layer.alert('上传不能超过50M');
+						return false;
+					}
+				},
+                success: function(res){										
+					if (res.type) { 
+						imageObj.show();
+	                    imageObj.attr('src','http://'+host+'/'+res.image_path);
+	                    $("#image_path").val(res.image_path);
+						$("#my-video_html5_api").attr('src','http://'+host+'/'+res.image_path);
+						myPlayer.play();
+					} else {
+						layer.alert(res.msg);
+						return false;
+					};
+                }
+            };
+            layui.upload(options);
+        });
+		
+        var imageObj2 = $("#image2");
+        var image_path2 = '{$row["image_src"] ? $row["image_src"] : ""}';
+        if (image_path2 != ''){
+            imageObj2.attr('src','http://'+host+'/'+image_path2);  //
+            $(".video-js").attr('poster','http://'+host+'/'+image_path2)	
+        }		
+        $("#image_path2").val(image_path2);
+        layui.use('upload', function(){
+            var options = {
+                elem: '#uploadFile2',
+                url: '{:url("upload/index")}',
+                ext: 'jpg|png|jpeg|gif',
+				before:function(res){
+					var size = res.files[0].size;
+					if(size > 52428800){
+						layer.alert('上传不能超过50M');
+						return false;
+					}
+				},
+                success: function(res){
+					if (res.type) {
+						imageObj2.show();
+	                    imageObj2.attr('src','http://'+host+'/'+res.image_path);
+	                    $("#image_path2").val(res.image_path);
+						$('.video-js').val(res.image_path);
+					} else {
+						layer.alert(res.msg);
+						return false;
+					}
+                }
+            };
+            layui.upload(options);
+        });		
+
+        var imageObj3 = $("#image3");
+        var image_path3 = '{$row["img_src"] ? $row["img_src"] : ""}';
+        if (image_path3 != ''){
+            imageObj3.attr('src','http://'+host+'/'+image_path3);  //
+        }		
+        $("#image_path3").val(image_path3);
+        layui.use('upload', function(){ 
+            var options = {
+                elem: '#uploadFile3',
+                url: '{:url("upload/index")}',
+                ext: 'jpg|png|jpeg|gif',
+				before:function(res){
+					var size = res.files[0].size;
+					if(size > 52428800){
+						layer.alert('上传不能超过50M');
+						return false;
+					}
+				},
+                success: function(res){
+					if (res.type) {
+						 imageObj3.show(); 
+	                    imageObj3.attr('src','http://'+host+'/'+res.image_path);
+	                    $("#image_path3").val(res.image_path);
+					} else {
+						layer.alert(res.msg);
+						return false;
+					}
+                }
+            };
+            layui.upload(options);
+        });	
+					
+	</script>	
+      <script src="/video/js/video.min.js"></script> 
+      <script src="http://vjs.zencdn.net/5.19/lang/zh-CN.js"></script>
+      <script type="text/javascript">
+			var myPlayer = videojs('my-video');
+			videojs("my-video").ready(function(){
+				var myPlayer = this;
+				myPlayer.play();
+			});
+			  
+		</script> 	
+{/block}
