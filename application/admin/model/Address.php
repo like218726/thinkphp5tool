@@ -32,7 +32,7 @@ class Address extends Model {
 	 * 
 	 */
 	public function getAddressInfoByParentCode($parent_code, $region_type) {
-		if (cookie($parent_code)) {
+		if (cookie($parent_code.$region_type)) {
 			$result = json_decode(cookie($parent_code), true);
 		} else {
 			$map = array();

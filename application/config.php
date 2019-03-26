@@ -95,7 +95,12 @@ return [
     // 是否强制使用路由
     'url_route_must'         => false,
     // 域名部署
-    'url_domain_deploy'      => false,
+    'url_domain_deploy'      => true,
+    \think\Route::domain('admin','admin'),
+    \think\Route::domain('api', 'api'),
+    \think\Route::domain('socket', 'socket'),
+    \think\Route::domain('demo', 'demo'),
+    \think\Route::domain('index', 'index'),
     // 域名根，如thinkphp.cn
     'url_domain_root'        => '',
     // 是否自动转换URL中的控制器和操作名
@@ -242,9 +247,11 @@ return [
     	'AccessKeyId' => 'LTAIJZuIwnRxQHkQ',
 	    'AccessKeySecret' => 'Hy5coFcvnveSO619IaerMX8JzgVwNB',
 	    'TemplateCode' => 'SMS_159490493',
+    	'ExpireTemplateCode' => 'SMS_160860272',
     	'SignName' => '弘达体育',
     	'sms_product' => '验证码',
     	'sms_time_out' => '60',
+    	'valid_minute' => '10',
     ],    
 	'NOTIFY_URL' => 'https://merchantapi.jitusoft.cn/notify',  
     'LINK_AGE' => '5',      

@@ -10,7 +10,7 @@ namespace app\common;
 class WechatAppPay{
     const WX_APP_ID  = "wx2749509348d8bfc3";
     const WX_MCH_ID  = "1264250901";
-    const WX_KEY     = "7592eb03f5e75aed4e6af02c95135526";
+    const WX_KEY     = "c57981abf4defda50ae3361b72fdbea6";
     var $parameters;//请求参数，类型为关联数组
     public $response;//微信返回的响应
     public $result;//返回参数，类型为关联数组
