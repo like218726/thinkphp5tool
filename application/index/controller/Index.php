@@ -29,8 +29,11 @@ class Index extends Controller
 				'address'=>['name'=>'地区联动','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Address'],
 				'wxoauth'=>['name'=>'微信授权登陆','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/WXOauth'],
 				'message'=>['name'=>'短信发送','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/Message'],
-				'wxappletpay'=>['name'=>'短信发送','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/WxAppletPay'],
+				'wxappletpay'=>['name'=>'小程序支付','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/WxAppletPay'],
 			],
+			'jitu'=>[
+				'excel_export' => ['name'=>'小程序支付','url'=>'https://github.com/like218726/thinkphp5toolkit/tree/master/ExcelExport'],
+			]
 		];
 		$this->assign("menu",$menu);
 		return $this->fetch();
